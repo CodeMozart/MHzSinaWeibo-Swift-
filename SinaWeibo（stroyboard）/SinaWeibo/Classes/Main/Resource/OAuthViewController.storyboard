@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zPY-zT-670">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Auth View Controller-->
+        <scene sceneID="R1b-rw-5Rj">
+            <objects>
+                <viewController id="1IY-ME-hTE" customClass="OAuthViewController" customModule="SinaWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5UT-JD-0Sr"/>
+                        <viewControllerLayoutGuide type="bottom" id="mqn-kh-4sl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zOp-M1-FZe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i21-iH-Hcm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1IY-ME-hTE" id="dwS-O2-4jV"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i21-iH-Hcm" firstAttribute="leading" secondItem="zOp-M1-FZe" secondAttribute="leading" id="3Ps-SQ-Dj7"/>
+                            <constraint firstAttribute="trailing" secondItem="i21-iH-Hcm" secondAttribute="trailing" id="Ham-cF-rBx"/>
+                            <constraint firstItem="i21-iH-Hcm" firstAttribute="top" secondItem="5UT-JD-0Sr" secondAttribute="bottom" id="NuC-tr-Lqn"/>
+                            <constraint firstItem="i21-iH-Hcm" firstAttribute="top" secondItem="zOp-M1-FZe" secondAttribute="top" id="wOD-6B-yWF"/>
+                            <constraint firstItem="mqn-kh-4sl" firstAttribute="top" secondItem="i21-iH-Hcm" secondAttribute="bottom" id="yR0-KJ-kYo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NuC-tr-Lqn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="MQS-VF-uQF">
+                        <barButtonItem key="leftBarButtonItem" title="关闭" id="xgo-df-fwd">
+                            <connections>
+                                <action selector="closeBtnClick:" destination="1IY-ME-hTE" id="rE4-8l-TQI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="填充" id="IhU-7S-BpC">
+                            <connections>
+                                <action selector="fillBtnClick:" destination="1IY-ME-hTE" id="Oku-a6-rgo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView" destination="i21-iH-Hcm" id="0ZC-Pb-ZAk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xy2-6W-ikM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826.5" y="321.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TeQ-8H-ibw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zPY-zT-670" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e71-MT-MlK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1IY-ME-hTE" kind="relationship" relationship="rootViewController" id="n6N-3B-ijp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCI-nx-xNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="414.5" y="321.5"/>
+        </scene>
+    </scenes>
+</document>
