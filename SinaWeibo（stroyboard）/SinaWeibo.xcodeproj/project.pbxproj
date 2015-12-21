@@ -33,6 +33,7 @@
 		42A773B01BF17B1100A4BAC5 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A773AF1BF17B1100A4BAC5 /* OAuthViewController.swift */; };
 		42A773FC1BF23AE700A4BAC5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A773FB1BF23AE700A4BAC5 /* Common.swift */; };
 		42A773FE1BF23B7400A4BAC5 /* PopoverAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A773FD1BF23B7400A4BAC5 /* PopoverAnimationManager.swift */; };
+		42AD4E681C25281800C5FF34 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD4E671C25281800C5FF34 /* StatusViewModel.swift */; };
 		42C3CFCE1BEC341B00A0619B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3CFCD1BEC341B00A0619B /* AppDelegate.swift */; };
 		42C3CFD51BEC341B00A0619B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C3CFD41BEC341B00A0619B /* Assets.xcassets */; };
 		42F6333A1BECD321001808AB /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F633261BECD321001808AB /* Discover.storyboard */; };
@@ -80,6 +81,7 @@
 		42A773AF1BF17B1100A4BAC5 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAuthViewController.swift; path = ../OAuthViewController.swift; sourceTree = "<group>"; };
 		42A773FB1BF23AE700A4BAC5 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		42A773FD1BF23B7400A4BAC5 /* PopoverAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimationManager.swift; sourceTree = "<group>"; };
+		42AD4E671C25281800C5FF34 /* StatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		42C3CFCA1BEC341B00A0619B /* SinaWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinaWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C3CFCD1BEC341B00A0619B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42C3CFD41BEC341B00A0619B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				42F633291BECD321001808AB /* Home.storyboard */,
 				42F6332A1BECD321001808AB /* HomeViewController.swift */,
 				426FBB541BF850FC0099DF7D /* MHzTableViewCell.swift */,
+				42AD4E671C25281800C5FF34 /* StatusViewModel.swift */,
 				426FBB501BF757F50099DF7D /* Status.swift */,
 				426FBB521BF848D30099DF7D /* User.swift */,
 			);
@@ -434,6 +437,7 @@
 				42A773FC1BF23AE700A4BAC5 /* Common.swift in Sources */,
 				426FBB511BF757F50099DF7D /* Status.swift in Sources */,
 				4237F86C1BECF54900FE42A8 /* BaseTableViewController.swift in Sources */,
+				42AD4E681C25281800C5FF34 /* StatusViewModel.swift in Sources */,
 				4296BA891BF33396003A8BEE /* QRCodeCreateViewController.swift in Sources */,
 				42A773FE1BF23B7400A4BAC5 /* PopoverAnimationManager.swift in Sources */,
 				42746ACE1BF4B97C003B5C6B /* NewFeatureViewController.swift in Sources */,

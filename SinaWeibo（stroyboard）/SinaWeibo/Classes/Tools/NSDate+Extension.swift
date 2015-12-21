@@ -33,7 +33,7 @@ extension NSDate {
         
         // 今天
         if calendar.isDateInToday(self) {
-            MHzLog("当天")
+            
             let timeInterval = Int(NSDate().timeIntervalSinceDate(self))
             
             if timeInterval < 60

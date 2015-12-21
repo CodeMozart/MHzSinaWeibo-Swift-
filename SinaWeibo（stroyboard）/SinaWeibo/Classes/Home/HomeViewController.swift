@@ -11,14 +11,16 @@ import SVProgressHUD
 import SDWebImage
 
 class HomeViewController: BaseTableViewController {
-
     // MARK: - 实例变量 ------------------------------
-    var statuses: [Status]?
+    var statuses: [StatusViewModel]?
         {
         didSet{
             tableView.reloadData()
         }
     }
+    
+    /// 缓存行高 key:微博的ID,value:行高
+    var rowHeightCache = [String: CGFloat]()
     
     // MARK: - 懒加载 ------------------------------
     /// 标题按钮
@@ -61,9 +63,9 @@ class HomeViewController: BaseTableViewController {
         loadWeiboData()
         
         //
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 100
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     deinit
@@ -143,26 +145,24 @@ class HomeViewController: BaseTableViewController {
             }
             
             // 2.遍历字典数组，处理微博数据
-            var models = [Status]()
+            var models = [StatusViewModel]()
             for dict in dictArray {
-                models.append(Status(dict: dict))
-                
+                models.append(StatusViewModel(status: Status(dict: dict)))
             }
             
             // 3.缓存配图
-            
-
-            self.statuses = models
+            self.cacheImage(models)
         }
     }
     
     /// 缓存配图
-    private func cacheImage(list: [Status]) {
+    private func cacheImage(list: [StatusViewModel]) {
+        
         let group = dispatch_group_create()
         
-        for status in list {
+        for viewModel in list {
             
-            guard let urls = status.pic_urls else {
+            guard let urls = viewModel.status.pic_urls else {
                 continue
             }
             
@@ -193,21 +193,54 @@ class HomeViewController: BaseTableViewController {
 }
 
 
+
 extension HomeViewController {
+    
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return statuses?.count ?? 0
     }
     
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! MHzTableViewCell
+        let viewModel = statuses![indexPath.row]
         
-        let status = statuses![indexPath.row]
-        cell.status = status
+//        let cell = tableView.dequeueReusableCellWithIdentifier(MHzTableViewCellIdentifier.identifierWithViewModel(viewModel)) as! MHzTableViewCell
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(MHzTableViewCellIdentifier.identifierWithViewModel(viewModel), forIndexPath: indexPath) as! MHzTableViewCell
+        
+        cell.viewModel = viewModel
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        // 取出模型
+        let viewModel = statuses![indexPath.item]
+        // 从缓存中获取
+        if let height = rowHeightCache[viewModel.status.idstr ?? "0"]
+        {
+            return height
+        }
+        // 没有缓存数据
+        // 拿到当前行的cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(MHzTableViewCellIdentifier.identifierWithViewModel(viewModel)) as! MHzTableViewCell
+        // 计算行高
+        let height = cell.calculateRowHeight(viewModel)
+        // 将计算结果缓存起来
+        rowHeightCache[viewModel.status.idstr ?? "0"] = height
+        // 返回行高
+        return height
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        rowHeightCache.removeAll()
     }
 }
 
